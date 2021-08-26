@@ -4,6 +4,6 @@ services:
   app:
     build:
       context: .
-    image: maxonchik/simplewhale
+    image: openvidu-simplewhale
     ports:
       - 8880:80  
