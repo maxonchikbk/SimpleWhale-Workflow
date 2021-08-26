@@ -22,7 +22,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Check Out Repo
         uses: actions/checkout@v2
-
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Test
+        run: |
+          echo $RELEASE_VERSION
+          echo ${{ env.RELEASE_VERSION }}
       # Runs a single command using the runners shell
       - name: Cache Docker layers
         uses: actions/cache@v2
@@ -50,7 +55,7 @@ jobs:
           file: ./Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/simplewhale:${{GITHUB_REF}}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/simplewhale:${{$env.RELEASE_VERSION}}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache          
 
