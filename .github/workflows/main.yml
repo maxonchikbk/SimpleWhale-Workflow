@@ -60,9 +60,6 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache          
 
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
-
       - name: Docker Deployment
         uses: wshihadeh/docker-deployment-action@v2
         with:
@@ -75,3 +72,6 @@ jobs:
           stack_file_name: docker-compose.yml
           keep_files: 5
           args: my_applicaion
+                    
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
