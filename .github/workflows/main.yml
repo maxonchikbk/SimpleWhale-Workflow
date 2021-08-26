@@ -71,7 +71,7 @@ jobs:
           deploy_path: /home/admin/my-deployment
           stack_file_name: docker-compose.yml
           keep_files: 5
-          args: my_applicaion
+          args: up -d
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
