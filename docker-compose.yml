@@ -2,6 +2,6 @@ version: '3.8'
 
 services:
   app:
-    image: maxonchik/simplewhale:latest
+    image: maxonchik/simplewhale:2.0
     ports:
       - 8880:80  
