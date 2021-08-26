@@ -68,10 +68,10 @@ jobs:
           ssh_public_key: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
           deployment_mode: docker-compose
           copy_stack_file: false
-          # deploy_path: /root/my-deployment
-          # stack_file_name: docker-compose.yml
-          # keep_files: 5
-          # args: my_applicaion
+          deploy_path: /home/admin/my-deployment
+          stack_file_name: docker-compose.yml
+          keep_files: 5
+          args: my_applicaion
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
